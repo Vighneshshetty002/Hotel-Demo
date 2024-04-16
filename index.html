@@ -126,17 +126,24 @@
         }
 
         .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: center;
-            gap: 20px;
+            position: relative;
         }
 
-        .hero img {
-            max-width: 100%; /* Ensure images don't exceed the container width */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10px; /* Rounded corners for images */
+        .slideshow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .hero a {
@@ -146,6 +153,11 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1; /* Ensure button stays on top */
         }
 
         .hero a:hover {
@@ -162,6 +174,9 @@
             color: white;
             text-align: center;
             padding: 10px 0;
+        }
+        h1{
+            background-color: white;
         }
     </style>
 
@@ -184,9 +199,11 @@
     </div><br>
 
     <div class="hero">
-        <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
-        <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
-        <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
+        <div class="slideshow-container">
+            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
+            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
+            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
+        </div>
         <a href="#">Menu</a>
     </div>
 
@@ -197,17 +214,18 @@
     <script>
         // JavaScript for image slideshow
         var index = 0;
-        var images = document.querySelectorAll('.hero img');
-        var totalImages = images.length;
+        var slides = document.querySelectorAll('.slide');
+        var totalSlides = slides.length;
 
-        function showNextImage() {
-            images[index].classList.remove('active');
-            index = (index + 1) % totalImages;
-            images[index].classList.add('active');
+        function showNextSlide() {
+            slides[index].style.opacity = 0; // Hide current slide
+            index = (index + 1) % totalSlides; // Calculate next slide index
+            slides[index].style.opacity = 1; // Show next slide
         }
 
-        // Automatically switch images every 5 seconds
-        setInterval(showNextImage, 5000);
+        // Automatically switch slides every 5 seconds
+        setInterval(showNextSlide, 5000);
     </script>
 </body>
 </html>
+
