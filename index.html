@@ -211,21 +211,29 @@
         <p>Powered By: VS Tech</p>
     </footer>
 
-    <script>
-        // JavaScript for image slideshow
-        var index = 0;
-        var slides = document.querySelectorAll('.slide');
-        var totalSlides = slides.length;
+   <script>
+    // JavaScript for image slideshow
+    var index = 0;
+    var images = document.querySelectorAll('.hero img');
+    var totalImages = images.length;
 
-        function showNextSlide() {
-            slides[index].style.opacity = 0; // Hide current slide
-            index = (index + 1) % totalSlides; // Calculate next slide index
-            slides[index].style.opacity = 1; // Show next slide
-        }
+    function showImage(index) {
+        images.forEach(image => image.style.display = 'none');
+        images[index].style.display = 'block';
+    }
 
-        // Automatically switch slides every 5 seconds
-        setInterval(showNextSlide, 5000);
-    </script>
+    function nextImage() {
+        index = (index + 1) % totalImages;
+        showImage(index);
+    }
+
+    // Show the first image initially
+    showImage(index);
+
+    // Automatically switch images every 3 seconds
+    setInterval(nextImage, 3000);
+</script>
+
 </body>
 </html>
 
