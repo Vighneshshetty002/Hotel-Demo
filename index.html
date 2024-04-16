@@ -127,7 +127,18 @@
         .hero img {
             max-width: 100%; /* Ensure images don't exceed the container width */
             height: auto; /* Maintain aspect ratio */
-            
+            opacity: 0; /* Initially hide images */
+            transition: opacity 1s ease; /* Smooth transition for opacity */
+            position: absolute; /* Position images absolutely */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto; /* Center images horizontally and vertically */
+        }
+
+        .hero img.active {
+            opacity: 1; /* Show active image */
         }
 
         .hero a {
@@ -180,7 +191,7 @@
 
     <div class="hero">
         <p>Pics of Popular Dishes available!!</p>
-        <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
+        <img class="active" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
         <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
         <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
         <br>
@@ -190,5 +201,24 @@
     <footer class="footer">
         <p>Powered By: VS Tech</p>
     </footer>
+
+    <script>
+        // JavaScript for slideshow
+        var index = 0;
+        var images = document.querySelectorAll('.hero img');
+        var totalImages = images.length;
+
+        function showNextImage() {
+            images[index].classList.remove('active');
+            index = (index + 1) % totalImages;
+            images[index].classList.add('active');
+        }
+
+        // Show the first image initially
+        images[index].classList.add('active');
+
+        // Automatically switch images every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
 </body>
 </html>
