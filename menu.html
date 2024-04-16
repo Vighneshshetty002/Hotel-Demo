@@ -7,52 +7,8 @@
 </head>
 <body>
 
-    <!-- Sample dishes with prices -->
-    <div id="menu">
-        <div class="dish">
-            <span class="name">Dish 1</span>
-            <span class="price">₹100</span>
-            <input type="number" class="quantity" value="0">
-        </div>
-        <div class="dish">
-            <span class="name">Dish 2</span>
-            <span class="price">₹150</span>
-            <input type="number" class="quantity" value="0">
-        </div>
-        <!-- Add more dishes here -->
-    </div>
-
-    <!-- Button to place the order -->
-    <button id="orderBtn">Order</button>
-
-    <script>
-        // Function to calculate the total amount and generate the UPI link
-        function generateUPI() {
-            let dishes = document.querySelectorAll('.dish');
-            let totalAmount = 0;
-            let orderDetails = 'Payment for your Order:';
-            
-            dishes.forEach(dish => {
-                let name = dish.querySelector('.name').innerText;
-                let price = parseInt(dish.querySelector('.price').innerText.replace('₹', ''));
-                let quantity = parseInt(dish.querySelector('.quantity').value);
-                
-                totalAmount += price * quantity;
-                if (quantity > 0) {
-                    orderDetails += `%0A${name}: ₹${price * quantity}`; // Add dish details to the order
-                }
-            });
-
-            let upiLink = `upi://pay?pa=7349173681@ibl&pn=Veshh-Eon&am=${totalAmount}&cu=INR&mode=02&tn=${orderDetails}`;
-            return upiLink;
-        }
-
-        // Event listener for the Order button
-        document.getElementById('orderBtn').addEventListener('click', function() {
-            let upiLink = generateUPI();
-            console.log(upiLink); // You can redirect the user to this link or handle it according to your application
-        });
-    </script>
-</body>
-</html>
+    <div class="food">
+        img
+        <p>Here there will be the brief intro for the restaurant!!</p>
+    </div><br>
 
