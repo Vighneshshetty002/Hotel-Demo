@@ -126,30 +126,20 @@
         }
 
         .hero {
-            position: relative; /* Adjust position for proper alignment */
-            height: 300px; /* Set height for the hero div */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
         }
 
         .hero img {
             max-width: 100%; /* Ensure images don't exceed the container width */
             height: auto; /* Maintain aspect ratio */
-            opacity: 0; /* Initially hide images */
-            transition: opacity 1s ease; /* Smooth transition for opacity */
-            position: absolute; /* Position images absolutely */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Center images horizontally and vertically */
-        }
-
-        .hero img.active {
-            opacity: 1; /* Show active image */
+            border-radius: 10px; /* Rounded corners for images */
         }
 
         .hero a {
-            position: absolute; /* Position button absolutely */
-            bottom: 20px; /* Adjust bottom position */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Center horizontally */
             background-color: black; /* Black color for the button */
             color: white;
             padding: 10px 20px;
@@ -194,8 +184,7 @@
     </div><br>
 
     <div class="hero">
-        <p>Pics of Popular Dishes available!!</p>
-        <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px" class="active">
+        <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
         <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
         <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
         <a href="#">Menu</a>
