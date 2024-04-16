@@ -30,11 +30,12 @@
 
         /* Header Styles */
         header {
-            text-align: center;
-            margin-bottom: 20px;
-            background-color: transparent; /* Transparent background for header */
+            position: relative; /* Position header relative for z-index */
+            background-color: white; /* White background for header */
             padding: 20px;
-            border-radius: 10px;
+            text-align: center;
+            border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+            z-index: 1; /* Ensure header stays on top */
         }
 
         header h1 {
@@ -112,7 +113,6 @@
             padding: 20px ;
             border: 2px solid #000; /* Thin black border */
             border-radius: 10px;
-            margin-bottom: 20px;
         }
 
         .intro p, .hero p {
@@ -127,13 +127,12 @@
 
         .hero {
             position: relative; /* Adjust position for proper alignment */
-            height: 500px; /* Set height for the hero div */
-            margin-bottom: 50px;
+            height: 300px; /* Set height for the hero div */
         }
 
         .hero img {
             max-width: 100%; /* Ensure images don't exceed the container width */
-            height: 250px; /* Maintain aspect ratio */
+            height: auto; /* Maintain aspect ratio */
             opacity: 0; /* Initially hide images */
             transition: opacity 1s ease; /* Smooth transition for opacity */
             position: absolute; /* Position images absolutely */
@@ -147,8 +146,8 @@
         }
 
         .hero a {
-            position: absolute; /* Position the button absolutely */
-            bottom: 20px; /* Set distance from the bottom */
+            position: absolute; /* Position button absolutely */
+            bottom: 20px; /* Adjust bottom position */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
             background-color: black; /* Black color for the button */
@@ -174,13 +173,6 @@
             text-align: center;
             padding: 10px 0;
         }
-        h1{
-            margin: 0px;
-            background-color: white;
-            padding: 50px;
-            margin-left: 0px;
-            margin-right: 0px;
-        }
     </style>
 
 </head>
@@ -189,7 +181,6 @@
         <h1>AS YOU NAME IT</h1>
         <p>Experience the Royal Flavors of India</p>
     </header>
-    <hr>
     <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -207,7 +198,6 @@
         <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px" class="active">
         <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
         <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
-        <br>
         <a href="#">Menu</a>
     </div>
 
