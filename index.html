@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL DURGA</title>
+
+    <!-- Font Import -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Applying the new font */
+            background-image: url('Luxury Ornamental Mandala Vector Art PNG, Luxury Ornamental Mandala Design Background, Mandala Design, Luxury Mandala, Gold PNG Image For Free Download.jpeg');
+            color: #333; /* Dark gray text color */
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: transparent; /* Transparent background for header */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 600; /* Increased font weight for emphasis */
+            color: black; /* White text color */
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            color: #fff; /* White text color */
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a {
+            background-color: black; /* Orange color for navigation links #ff5722 */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #333; /* Lighter shade of orange on hover and active state #ff7043 */
+            color: white;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 10px;
+            }
+        }
+        header {
+            text-align: center;
+            margin: 20px auto;
+            
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease; /* Smooth transition effect */
+            background-color: white; /* Transparent background for the hero div */
+            padding: 20px ;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        header p {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff; /* White text color */
+            background-color: #000; /* Black background for the text */
+            padding: 5px; /* Padding to separate text from border */
+            margin-bottom: 30px;
+            margin-left:200px ;
+            margin-right: 200px;
+            border-radius: 5px; /* Rounded corners for the text background */
+        }
+
+
+
+
+        .intro {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 600px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease; /* Smooth transition effect */
+            background-color: white; /* Transparent background for the hero div */
+            padding: 20px ;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        .intro p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff; /* White text color */
+            background-color: #000; /* Black background for the text */
+            padding: 10px; /* Padding to separate text from border */
+            margin-bottom: 20px;
+            border-radius: 5px; /* Rounded corners for the text background */
+        }
+
+
+        .hero {
+            text-align: center;
+            margin: 20px auto 40px;
+            width: 400px; /* Specify the width */
+            height: 450px; /* Specify the height */
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease; /* Smooth transition effect */
+            background-color: white; /* Transparent background for the hero div */
+            padding: 20px ;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+            display: block; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff; /* White text color */
+            background-color: #000; /* Black background for the text */
+            padding: 10px; /* Padding to separate text from border */
+            margin-bottom: 20px;
+            border-radius: 5px; /* Rounded corners for the text background */
+        }
+
+        .hero img {
+            
+            max-width: 100%; /* Ensure images don't exceed the container width */
+            height: 200px; /* Maintain aspect ratio */
+            display: none; /* Hide images by default */
+        }
+
+        .hero a {
+            background-color: black; /* Orange color for the button #ff5722 */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .hero a:hover {
+            background-color: #333; /* Lighter shade of orange on hover #ff7043 */
+            color: white;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333; /* Dark background for the footer */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>HOTEL DURGA</h1>
+        <p>Experience the Royal Flavors of India</p>
+    
+    
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+</header>
+    <div class="intro">
+        <p>Here there will be the brief intro for the restaurant!!</p>
+    </div><br>
+
+    <div class="hero">
+        <p>Pics of Popular Dishes available!!</p>
+        <img src="Images/bg-remover-Chutney Idli South Indian Cuisine Sambar [Idli Vada].png" alt="Dish 1" width="300px">
+        <img src="Images/idli_cleanup-removebg-preview.png" alt="Dish 2" width="300px">
+        <img src="Images/bg-remover-kisspng-dosa-breakfast-south-indian-cuisine-uttapam-masala-dosa-5b4775a89e4201.7040090915314098326482.png" alt="Dish 3" width="300px">
+        <br>
+        <a href="#">Menu</a>
+    </div>
+
+    <footer class="footer">
+        <p>Powered By: VS Tech</p>
+    </footer>
+    
+    <script>
+        // JavaScript for image slideshow
+        var index = 0;
+        var images = document.querySelectorAll('.hero img');
+        var totalImages = images.length;
+
+        function showImage(index) {
+            images.forEach(image => image.style.display = 'none');
+            images[index].style.display = 'block';
+        }
+
+        function nextImage() {
+            index = (index + 1) % totalImages;
+            showImage(index);
+        }
+
+        // Show the first image initially
+        showImage(index);
+
+        // Automatically switch images every 5 seconds
+        setInterval(nextImage, 5000);
+    </script>
+</body>
+</html>
