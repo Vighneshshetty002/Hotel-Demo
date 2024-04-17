@@ -7,105 +7,6 @@
 
     <!-- Font Import -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-
-    <style>
-        /* General Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif; /* Applying the new font */
-            background-color: #fff; /* White background */
-            color: #333; /* Dark gray text color */
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        /* Header Styles */
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-            background-color: #fff; /* White background for header */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        header h1 {
-            font-size: 36px;
-            font-weight: 600; /* Increased font weight for emphasis */
-            color: black; /* Black text color */
-            margin-bottom: 10px;
-        }
-
-        /* Cart Styles */
-        .cart {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 90%;
-            overflow: hidden;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for the cart */
-            padding: 20px;
-            border: 2px solid #000; /* Thin black border */
-            border-radius: 10px;
-        }
-
-        .cart h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #000; /* Black text color */
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            margin-bottom: 20px;
-            background-color: #fff; /* White background for cart items */
-            padding: 20px;
-            border: 2px solid #000; /* Thin black border */
-            border-radius: 10px;
-        }
-
-        .cart-item h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #000; /* Black text color */
-            margin-bottom: 10px;
-        }
-
-        .cart-item p {
-            font-size: 16px;
-            color: #333; /* Dark gray text color */
-            margin-bottom: 10px;
-        }
-
-        /* Total Price Section */
-        .total-price {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        /* Pay Now Button */
-        .pay-now {
-            background-color: black; /* Black color for button */
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
-            display: block;
-            margin: 20px auto;
-            width: 150px;
-        }
-
-        .pay-now:hover {
-            background-color: #333; /* Darker shade on hover */
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -144,8 +45,81 @@
 
         // Generate Pay Now link with total amount
         const payNowButton = document.getElementById('pay-now');
-        const payNowLink = `upi://pay?pa=7349173681@ibl&pn=YOU NAME IT&am=${totalPrice}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+        const payNowLink = `upi://pay?pa=7349173681@ibl&pn=AS YOU NAME IT&am=${totalPrice}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
         payNowButton.href = payNowLink;
     </script>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cart {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 90%;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        .cart h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        .cart-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .cart-item p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .total-price {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .pay-now {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+        }
+        .pay-now:hover {
+            background-color: #333;
+            color: white;
+        }
+    </style>
 </body>
 </html>
