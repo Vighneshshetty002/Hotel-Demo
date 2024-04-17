@@ -117,7 +117,7 @@
             margin-bottom: 10px;
         }
 
-        .menu-item a {
+        .menu-item button {
             background-color: black; /* Black color for buttons */
             color: white;
             padding: 10px 20px;
@@ -148,42 +148,10 @@
             background-color: #333; /* Darker shade on hover */
             color: white;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>MENU</h1>
-    </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-        </ul>
-    </nav>
 
-    <div class="menu">
-        <div class="menu-item">
-            <h3>Dish 1</h3>
-            <p>Description of Dish 1 goes here.</p>
-            <button>Buy</button>
-            <button>Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <h3>Dish 2</h3>
-            <p>Description of Dish 2 goes here.</p>
-            <a href="upi://pay?pa=7349173681@ibl&pn=HappyFood&am=500&cu=INR&mode=02&tn=Payment%20for%20your%20Order">Buy</button>
-            <button>Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <h3>Dish 3</h3>
-            <p>Description of Dish 3 goes here.</p>
-            <button>Buy</button>
-            <button>Add to Cart</button>
-        </div>
-        <!-- Add more menu items as needed -->
-    </div>
-
-    <a href="index.html" class="return-home">Return Home</a>
-
-</body>
-</html>
+        /* Cart Button */
+        .cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: black;
