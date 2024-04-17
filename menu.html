@@ -137,6 +137,9 @@
     </style>
 
     <script>
+        // Clear cart items on page load
+        localStorage.removeItem('cartItems');
+
         const addToCartButtons = document.querySelectorAll('.add-to-cart');
         const cartPopup = document.getElementById('cart-popup');
 
