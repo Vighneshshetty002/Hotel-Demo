@@ -61,6 +61,29 @@
         <h2>Cart</h2>
         <div class="cart-items">
             <!-- Display cart items here -->
+            <?php
+            // Start the session
+            session_start();
+
+            // Function to display cart items and calculate total amount
+            function displayCartItems() {
+                if (isset($_SESSION["cartItems"])) {
+                    $cartItems = $_SESSION["cartItems"];
+                    $totalAmount = 0; // Initialize total amount
+                    foreach ($cartItems as $item) {
+                        echo "<div>" . $item["name"] . " - $" . $item["price"] . "</div>";
+                        $totalAmount += $item["price"]; // Add item price to total amount
+                    }
+                    echo "<div>Total: $" . $totalAmount . "</div>"; // Display total amount
+                }
+            }
+
+            // Display cart items and total amount
+            displayCartItems();
+
+            ?>
+
+            <!-- Display total amount -->
         </div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="email" name="email" placeholder="Enter your email" required>
@@ -70,9 +93,6 @@
     </div>
 
     <?php
-    // Start the session
-    session_start();
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the form data
         $email = $_POST["email"];
@@ -86,31 +106,13 @@
 
         // Send email
         mail($to, $subject, $message, $headers);
-        
-        // Clear the cart items
+
+        // Clear the cart
         unset($_SESSION["cartItems"]);
-        
+
         // Display success message
         echo "<p>Email sent successfully.</p>";
     }
-
-    // Function to display cart items
-    function displayCartItems() {
-        if (isset($_SESSION["cartItems"])) {
-            $cartItems = $_SESSION["cartItems"];
-            foreach ($cartItems as $item) {
-                echo "<div>" . $item["name"] . " - " . $item["price"] . "</div>";
-            }
-        }
-    }
-
-    // Display cart items
-    displayCartItems();
-
-    // Add items to cart
-    // Example: $_SESSION["cartItems"] = array(); // Initialize cart items array
-    // Add items to $_SESSION["cartItems"] as needed
-
     ?>
 
     <script>
