@@ -15,86 +15,34 @@
         <div class="cart-items">
             <!-- Display cart items here -->
         </div>
-        <div>Total Amount: <span class="total-amount">$0</span></div>
-        <button class="pay-now">Pay Now</button>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="hidden" name="invoiceData" value="Your invoice data here">
+            <button type="submit" class="pay-now">Send Invoice</button>
+        </form>
     </div>
 
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .cart {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 90%;
-            overflow: hidden;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 10px;
-        }
-        .cart h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 20px;
-        }
-        .cart-items {
-            margin-bottom: 20px;
-        }
-        .pay-now {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .pay-now:hover {
-            background-color: #333;
-            color: white;
-        }
-    </style>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Get the form data
+        $email = $_POST["email"];
+        $invoiceData = $_POST["invoiceData"];
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            displayCartItems();
-            displayTotalAmount();
-            document.querySelector('.pay-now').addEventListener('click', payNow);
-        });
+        // Send the email
+        $to = "vighneshshetty002@gmail.com";
+        $subject = "Invoice for Your Purchase";
+        $message = "Invoice Data: " . $invoiceData; // Customize this message as needed
+        $headers = "From: your-email@example.com"; // Replace with your email address
 
-        function displayCartItems() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const cartItemsContainer = document.querySelector('.cart-items');
-            cartItemsContainer.innerHTML = '';
-            cartItems.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name} - ${item.price}`;
-                cartItemsContainer.appendChild(cartItem);
-            });
-        }
+        // Send email
+        mail($to, $subject, $message, $headers);
+        
+        // Display success message
+        echo "<p>Email sent successfully.</p>";
+    }
+    ?>
 
-        function displayTotalAmount() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
-            document.querySelector('.total-amount').textContent = `$${totalAmount}`;
-        }
+    <!-- Your CSS and JavaScript code here -->
 
-        function payNow() {
-            const totalAmount = parseFloat(document.querySelector('.total-amount').textContent.replace('$', ''));
-            const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
-            window.location.href = paymentLink;
-        }
-    </script>
 </body>
 </html>
