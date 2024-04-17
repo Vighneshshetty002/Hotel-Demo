@@ -86,21 +86,19 @@
             <!-- Display total amount -->
         </div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="email" name="email" placeholder="Enter your email" required>
             <input type="hidden" name="invoiceData" value="Your invoice data here">
-            <button type="submit" class="pay-now">Send Invoice</button>
+            <button type="submit" class="pay-now">Pay Now</button>
         </form>
     </div>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the form data
-        $email = $_POST["email"];
         $invoiceData = $_POST["invoiceData"];
 
         // Send the email
         $to = "vighneshshetty002@gmail.com";
-        $subject = "Invoice for Your Purchase";
+        $subject = "Order Received";
         $message = "Invoice Data: " . $invoiceData; // Customize this message as needed
         $headers = "From: your-email@example.com"; // Replace with your email address
 
@@ -114,12 +112,6 @@
         echo "<p>Email sent successfully.</p>";
     }
     ?>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Your JavaScript code here
-        });
-    </script>
 
 </body>
 </html>
