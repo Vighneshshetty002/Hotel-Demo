@@ -79,7 +79,7 @@
             cartItemsContainer.innerHTML = '';
             cartItems.forEach(item => {
                 const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name} - $${item.price}`;
+                cartItem.textContent = `${item.name} - ${item.price}`;
                 cartItemsContainer.appendChild(cartItem);
             });
         }
