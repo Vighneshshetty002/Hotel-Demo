@@ -18,21 +18,26 @@
         <div class="menu-item">
             <h3>Dish 1</h3>
             <p>Description of Dish 1.</p>
-            <a href="upi://pay?pa=7349173681@ibl&pn=AS YOU NAME IT &am=150&cu=INR&mode=02&tn=Payment%20for%20your%20Order" class="order-button">Order</a>
-            <a href="cart.html" class="view-cart">View Cart</a>
+            <button class="order-button">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
         <div class="menu-item">
             <h3>Dish 2</h3>
             <p>Description of Dish 2.</p>
-            <a href="upi://pay?pa=7349173681@ibl&pn=AS YOU NAME IT &am=150&cu=INR&mode=02&tn=Payment%20for%20your%20Order" class="order-button">Order</a>
-            <a href="cart.html" class="view-cart">View Cart</a>
+            <button class="order-button">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
         <div class="menu-item">
             <h3>Dish 3</h3>
             <p>Description of Dish 3.</p>
-            <a href="upi://pay?pa=7349173681@ibl&pn=AS YOU NAME IT &am=150&cu=INR&mode=02&tn=Payment%20for%20your%20Order" class="order-button">Order</a>
-            <a href="cart.html" class="view-cart">View Cart</a>
+            <button class="order-button">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
+    </div>
+
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-items"></div>
+        <a href="cart.html" class="view-cart">View Cart</a>
     </div>
 
     <style>
@@ -86,7 +91,7 @@
             color: #333;
             margin-bottom: 10px;
         }
-        .order-button, .view-cart {
+        .order-button, .add-to-cart {
             background-color: black;
             color: white;
             padding: 10px 20px;
@@ -95,10 +100,64 @@
             transition: background-color 0.3s, color 0.3s;
             margin-right: 10px;
         }
-        .order-button:hover, .view-cart:hover {
+        .order-button:hover, .add-to-cart:hover {
+            background-color: #333;
+            color: white;
+        }
+        .cart-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            display: none;
+        }
+        .cart-items {
+            margin-bottom: 10px;
+        }
+        .view-cart {
+            display: block;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .view-cart:hover {
             background-color: #333;
             color: white;
         }
     </style>
+
+    <script>
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartPopup = document.getElementById('cart-popup');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.parentElement.querySelector('h3').textContent;
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                cartItems.push({ name: itemName, price: '10' }); // Replace '10' with actual price
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                showCartPopup();
+            });
+        });
+
+        function showCartPopup() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name}`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            cartPopup.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
