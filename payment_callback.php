@@ -1,29 +1,29 @@
 <?php
-// Receive the callback data from PhonePe
-$callbackData = $_POST; // Assuming PhonePe sends data via POST method
+// Handle payment callback from PhonePe
+$transactionId = $_POST['transaction_id'];
+$amount = $_POST['amount'];
+$status = $_POST['status'];
 
-// Extract transaction details
-$transactionId = $callbackData['transaction_id'];
-$amount = $callbackData['amount'];
-$status = $callbackData['status']; // This will indicate if the payment was successful or not
+// Verify payment status and process receipt generation
+if ($status === 'success') {
+    // Generate payment receipt
+    $receipt = "
+        <div class='receipt'>
+            <h2>Payment Receipt</h2>
+            <p>Transaction ID: $transactionId</p>
+            <p>Amount: ₹$amount</p>
+            <p>Status: $status</p>
+            <p>Date: " . date('Y-m-d H:i:s') . "</p>
+            <p>Thank you for your purchase!</p>
+        </div>
+    ";
 
-// Generate a receipt
-$receipt = "
-    <h2>Payment Receipt</h2>
-    <p>Transaction ID: $transactionId</p>
-    <p>Amount: $amount</p>
-    <p>Status: $status</p>
-    <p>Date: " . date('Y-m-d H:i:s') . "</p>
-    <p>Thank you for your purchase!</p>
-";
+    // Output receipt
+    echo $receipt;
 
-// Display the receipt
-echo $receipt;
-
-// Optionally, store transaction information in your database
-// Connect to your database and insert the transaction details
-// Example:
-// $mysqli = new mysqli("localhost", "username", "password", "database");
-// $sql = "INSERT INTO transactions (transaction_id, amount, status, timestamp) VALUES ('$transactionId', '$amount', '$status', NOW())";
-// $mysqli->query($sql);
+    // You can also store transaction details in your database for future reference
+    // For example, insert $transactionId, $amount, $status, and timestamp into your database
+} else {
+    echo "Payment failed. Please try again later.";
+}
 ?>
