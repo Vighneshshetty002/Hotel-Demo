@@ -9,50 +9,169 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
     <style>
-        /* Paste the CSS code provided previously here */
-    </style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
+        body {
+            font-family: 'Poppins', sans-serif; /* Applying the new font */
+            background-color: #fff; /* White background */
+            color: #333; /* Dark gray text color */
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff; /* White background for header */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 600; /* Increased font weight for emphasis */
+            color: black; /* Black text color */
+            margin-bottom: 10px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a {
+            background-color: black; /* Black color for navigation links */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #333; /* Darker shade on hover and active state */
+            color: white;
+        }
+
+        /* Menu Styles */
+        .menu {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 90%;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for the menu */
+            padding: 20px;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        .menu h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            margin-bottom: 20px;
+            background-color: #fff; /* White background for menu items */
+            padding: 20px;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        .menu-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 16px;
+            color: #333; /* Dark gray text color */
+            margin-bottom: 10px;
+        }
+
+        .menu-item button {
+            background-color: black; /* Black color for buttons */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        .menu-item button:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+
+        /* Return Home Button */
+        .return-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: black; /* Black color for button */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        .return-home:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>MENU</h1>
+        <h1>Menu - AS YOU NAME IT</h1>
     </header>
-
     <nav>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="index.html">Home</a></li>
         </ul>
     </nav>
 
     <div class="menu">
         <h2>Our Menu</h2>
-
         <div class="menu-item">
             <h3>Dish 1</h3>
-            <p>Description of Dish 1 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Description of Dish 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nam!</p>
+            <p>Price: $10</p>
             <button>Add to Cart</button>
         </div>
-
         <div class="menu-item">
             <h3>Dish 2</h3>
-            <p>Description of Dish 2 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <p>Description of Dish 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nam!</p>
+            <p>Price: $15</p>
             <button>Add to Cart</button>
         </div>
-
-        <div class="menu-item">
-            <h3>Dish 3</h3>
-            <p>Description of Dish 3 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <!-- Add more menu items as needed -->
-
     </div>
 
-    <a href="#" class="return-home">Home</a>
-    <a href="#" class="cart">View Cart</a>
-
+    <a href="#" class="return-home">Return Home</a>
 </body>
 </html>
