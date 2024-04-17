@@ -70,7 +70,7 @@
             cartItemsContainer.innerHTML = '';
             cartItems.forEach(item => {
                 const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name} - ${item.price}`;
+                cartItem.textContent = `${item.name} - $${item.price}`;
                 cartItemsContainer.appendChild(cartItem);
             });
         }
@@ -93,7 +93,7 @@
                 <div class="receipt">
                     <h2>Payment Receipt</h2>
                     <p>Transaction ID: ${transactionId}</p>
-                    <p>Amount: $${amount}</p>
+                    <p>Amount: $${parseFloat(amount).toFixed(2)}</p>
                     <p>Status: ${status}</p>
                     <p>Date: ${new Date().toLocaleString()}</p>
                     <p>Thank you for your purchase!</p>
