@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - AS YOU NAME IT</title>
+</head>
+<body>
+    <header>
+        <h1>Cart - AS YOU NAME IT</h1>
+    </header>
+
+    <div class="cart">
+        <h2>Cart</h2>
+        <div class="cart-items">
+            <!-- Display cart items here -->
+        </div>
+        <div>Total Amount: <span class="total-amount">$0</span></div>
+        <button class="pay-now">Pay Now</button>
+    </div>
 
     <style>
         /* General Styles */
@@ -51,67 +65,37 @@
             color: white;
         }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Cart - AS YOU NAME IT</h1>
-    </header>
 
-    <div class="cart">
-        <h2>Cart</h2>
-        <div class="cart-items">
-            <!-- Display cart items here -->
-            <?php
-            // Start the session
-            session_start();
-
-            // Function to display cart items and calculate total amount
-            function displayCartItems() {
-                if (isset($_SESSION["cartItems"])) {
-                    $cartItems = $_SESSION["cartItems"];
-                    $totalAmount = 0; // Initialize total amount
-                    foreach ($cartItems as $item) {
-                        echo "<div>" . $item["name"] . " - $" . $item["price"] . "</div>";
-                        $totalAmount += $item["price"]; // Add item price to total amount
-                    }
-                    echo "<div>Total: $" . $totalAmount . "</div>"; // Display total amount
-                }
-            }
-
-            // Display cart items and total amount
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             displayCartItems();
+            displayTotalAmount();
+            document.querySelector('.pay-now').addEventListener('click', payNow);
+        });
 
-            ?>
+        function displayCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name} - ${item.price}`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        }
 
-            <!-- Display total amount -->
-        </div>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="hidden" name="invoiceData" value="Your invoice data here">
-            <button type="submit" class="pay-now">Pay Now</button>
-        </form>
-    </div>
+        function displayTotalAmount() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+            document.querySelector('.total-amount').textContent = `$${totalAmount}`;
+        }
 
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Get the form data
-        $invoiceData = $_POST["invoiceData"];
-
-        // Send the email
-        $to = "vighneshshetty002@gmail.com";
-        $subject = "Order Received";
-        $message = "Invoice Data: " . $invoiceData; // Customize this message as needed
-        $headers = "From: your-email@example.com"; // Replace with your email address
-
-        // Send email
-        mail($to, $subject, $message, $headers);
-
-        // Clear the cart
-        unset($_SESSION["cartItems"]);
-
-        // Display success message
-        echo "<p>Email sent successfully.</p>";
-    }
-    ?>
-
+        function payNow() {
+            const totalAmount = parseFloat(document.querySelector('.total-amount').textContent.replace('$', ''));
+            const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            window.location.href = paymentLink;
+        }
+    </script>
 </body>
 </html>
+
