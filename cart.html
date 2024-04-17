@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - AS YOU NAME IT</title>
+
+    <!-- Font Import -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
+
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Applying the new font */
+            background-color: #fff; /* White background */
+            color: #333; /* Dark gray text color */
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #fff; /* White background for header */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            font-weight: 600; /* Increased font weight for emphasis */
+            color: black; /* Black text color */
+            margin-bottom: 10px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav a {
+            background-color: black; /* Black color for navigation links */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: #333; /* Darker shade on hover and active state */
+            color: white;
+        }
+
+        /* Cart Styles */
+        .cart {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 90%;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for the menu */
+            padding: 20px;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        .cart h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            margin-bottom: 20px;
+            background-color: #fff; /* White background for menu items */
+            padding: 20px;
+            border: 2px solid #000; /* Thin black border */
+            border-radius: 10px;
+        }
+
+        .cart-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            margin-bottom: 10px;
+        }
+
+        .cart-item p {
+            font-size: 16px;
+            color: #333; /* Dark gray text color */
+            margin-bottom: 10px;
+        }
+
+        .cart-item button {
+            background-color: black; /* Black color for buttons */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        .cart-item button:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+
+        .total {
+            margin-top: 20px;
+        }
+
+        .total h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            margin-bottom: 10px;
+        }
+
+        .total .pay {
+            background-color: black; /* Black color for buttons */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        .total .pay:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+
+        /* Return Home Button */
+        .return-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: black; /* Black color for button */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+        }
+
+        .return-home:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+
+        /* Cart Button */
+        .cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cart:hover {
+            background-color: #333; /* Darker shade on hover */
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Cart</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#" class="active">Cart</a></li>
+        </ul>
+    </nav>
+
+    <div class="cart">
+        <h2>Your Cart</h2>
+
+        <div class="cart-item">
+            <h3>Dish 1</h3>
+            <p>Quantity: 2</p>
+            <p>Price: $10 each</p>
+            <p>Total: $20</p>
+            <button>Add More</button>
+        </div>
+
+        <div class="cart-item">
+            <h3>Dish 2</h3>
+            <p>Quantity: 1</p>
+            <p>Price: $15 each</p>
+            <p>Total: $15</p>
+            <button>Add More</button>
+        </div>
+
+        <!-- Add more cart items as needed -->
+
+        <div class="total">
+            <h3>Total Amount: $35</h3>
+            <a href="#" class="pay">Pay Now</a>
+        </div>
+    </div>
+
+    <a href="#" class="return-home">Home</a>
+
+    <script>
+        // Add JavaScript code here if needed
+    </script>
+</body>
+</html>
 
