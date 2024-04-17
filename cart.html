@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - AS YOU NAME IT</title>
-
-    <!-- Font Import -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 </head>
 <body>
     <header>
@@ -15,44 +12,16 @@
 
     <div class="cart">
         <h2>Cart</h2>
-        <div id="cart-items"></div>
-        <div id="total-price" class="total-price"></div>
-        <a href="#" id="pay-now" class="pay-now">Pay Now</a>
+        <div class="cart-items">
+            <!-- Display cart items here -->
+        </div>
+        <button class="pay-now">Pay Now</button>
     </div>
-
-    <script>
-        // Retrieve cart items from local storage
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-        // Display cart items and calculate total price
-        const cartContainer = document.getElementById('cart-items');
-        const totalPriceElement = document.getElementById('total-price');
-        let totalPrice = 0;
-
-        cartItems.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            cartItem.innerHTML = `
-                <h3>${item.name}</h3>
-                <p>Price: ${item.price}</p>
-            `;
-            cartContainer.appendChild(cartItem);
-
-            totalPrice += parseFloat(item.price.replace('$', ''));
-        });
-
-        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-
-        // Generate Pay Now link with total amount
-        const payNowButton = document.getElementById('pay-now');
-        const payNowLink = `upi://pay?pa=7349173681@ibl&pn=AS YOU NAME IT&am=${totalPrice}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
-        payNowButton.href = payNowLink;
-    </script>
 
     <style>
         /* General Styles */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #fff;
             color: #333;
             line-height: 1.6;
@@ -61,9 +30,6 @@
         header {
             text-align: center;
             margin-bottom: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
         }
         .cart {
             text-align: center;
@@ -82,28 +48,8 @@
             color: #000;
             margin-bottom: 20px;
         }
-        .cart-item {
+        .cart-items {
             margin-bottom: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 10px;
-        }
-        .cart-item h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 10px;
-        }
-        .cart-item p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .total-price {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: 600;
         }
         .pay-now {
             background-color: black;
@@ -112,14 +58,28 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            display: block;
-            margin: 20px auto;
-            width: 150px;
         }
         .pay-now:hover {
             background-color: #333;
             color: white;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCartItems();
+        });
+
+        function displayCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name} - ${item.price}`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        }
+    </script>
 </body>
 </html>
