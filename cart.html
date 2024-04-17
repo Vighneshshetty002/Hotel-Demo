@@ -15,6 +15,7 @@
         <div class="cart-items">
             <!-- Display cart items here -->
         </div>
+        <div>Total Amount: <span class="total-amount">$0</span></div>
         <button class="pay-now">Pay Now</button>
     </div>
 
@@ -68,6 +69,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             displayCartItems();
+            displayTotalAmount();
+            document.querySelector('.pay-now').addEventListener('click', payNow);
         });
 
         function displayCartItems() {
@@ -79,6 +82,18 @@
                 cartItem.textContent = `${item.name} - ${item.price}`;
                 cartItemsContainer.appendChild(cartItem);
             });
+        }
+
+        function displayTotalAmount() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const totalAmount = cartItems.reduce((total, item) => total + item.price, 0);
+            document.querySelector('.total-amount').textContent = `$${totalAmount}`;
+        }
+
+        function payNow() {
+            const totalAmount = parseFloat(document.querySelector('.total-amount').textContent.replace('$', ''));
+            const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            window.location.href = paymentLink;
         }
     </script>
 </body>
