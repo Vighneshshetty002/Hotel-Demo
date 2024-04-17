@@ -144,6 +144,27 @@
             background-color: #333; /* Darker shade on hover */
             color: white;
         }
+
+        /* Cart Section */
+        .cart-section {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #333; /* Dark gray background for cart section */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        .cart-section p {
+            margin-bottom: 5px;
+        }
+
+        .cart-section a {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -153,25 +174,70 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">About</a></li>
         </ul>
     </nav>
 
     <div class="menu">
-        <h2>Our Menu</h2>
+        <h2>Menu</h2>
         <div class="menu-item">
             <h3>Dish 1</h3>
-            <p>Description of Dish 1 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nam!</p>
+            <p>Description of Dish 1</p>
             <p>Price: $10</p>
-            <button>Add to Cart</button>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="place-order">Order</button>
+            <div class="cart-section">
+                <p>Added to Cart:</p>
+                <ul class="cart-items"></ul>
+                <a href="cart.html">View Cart -></a>
+            </div>
         </div>
         <div class="menu-item">
             <h3>Dish 2</h3>
-            <p>Description of Dish 2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, nam!</p>
-            <p>Price: $15</p>
-            <button>Add to Cart</button>
+            <p>Description of Dish 2</p>
+            <p>Price: $12</p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="place-order">Order</button>
+            <div class="cart-section">
+                <p>Added to Cart:</p>
+                <ul class="cart-items"></ul>
+                <a href="cart.html">View Cart -></a>
+            </div>
         </div>
+        <!-- Add more menu items as needed -->
     </div>
 
     <a href="#" class="return-home">Return Home</a>
+
+    <script>
+        // Function to handle clicking on "Add to Cart" button
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the corresponding menu item details
+                const menuItem = this.parentNode;
+                const itemName = menuItem.querySelector('h3').textContent;
+                const itemPrice = menuItem.querySelector('p:nth-child(3)').textContent;
+
+                // Create a new list item for the cart
+                const cartItem = document.createElement('li');
+                cartItem.textContent = `${itemName} - ${itemPrice}`;
+
+                // Append the cart item to the cart section
+                menuItem.querySelector('.cart-section .cart-items').appendChild(cartItem);
+
+                // Show the cart section
+                menuItem.querySelector('.cart-section').style.display = 'block';
+            });
+        });
+
+        // Function to handle clicking on "Place Order" button
+        document.querySelectorAll('.place-order').forEach(button => {
+            button.addEventListener('click', function() {
+                // Redirect to cart page
+                window.location.href = 'cart.html';
+            });
+        });
+    </script>
 </body>
 </html>
