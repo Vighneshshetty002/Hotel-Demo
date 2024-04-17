@@ -70,43 +70,22 @@
             cartItemsContainer.innerHTML = '';
             cartItems.forEach(item => {
                 const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name} - $${item.price}`;
+                cartItem.textContent = `${item.name} - ${item.price}`;
                 cartItemsContainer.appendChild(cartItem);
             });
         }
 
         function payNow() {
-            // Simulating payment callback data
-            const callbackData = {
-                transaction_id: '123456789',
-                amount: '50',
-                status: 'success'
-            };
+            // Calculate total amount based on items in the cart
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            let totalAmount = 0;
+            cartItems.forEach(item => {
+                totalAmount += parseFloat(item.price);
+            });
 
-            // Process the callback data
-            const transactionId = callbackData['transaction_id'];
-            const amount = callbackData['amount'];
-            const status = callbackData['status'];
-
-            // Generate receipt
-            const receipt = `
-                <div class="receipt">
-                    <h2>Payment Receipt</h2>
-                    <p>Transaction ID: ${transactionId}</p>
-                    <p>Amount: $${parseFloat(amount).toFixed(2)}</p>
-                    <p>Status: ${status}</p>
-                    <p>Date: ${new Date().toLocaleString()}</p>
-                    <p>Thank you for your purchase!</p>
-                </div>
-            `;
-
-            // Display receipt
-            const cartContainer = document.querySelector('.cart');
-            cartContainer.insertAdjacentHTML('beforeend', receipt);
-
-            // Clear the cart after successful payment
-            localStorage.removeItem('cartItems');
-            displayCartItems(); // Refresh cart items
+            // Redirect to PhonePe with dynamically calculated total amount
+            const paymentLink = `upi://pay?pa=7349173681@ibl&pn=YOU NAME IT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            window.location.href = paymentLink;
         }
     </script>
 </head>
