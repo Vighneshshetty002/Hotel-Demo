@@ -4,6 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - AS YOU NAME IT</title>
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cart {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 90%;
+            overflow: hidden;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+        .cart h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        .pay-now {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .pay-now:hover {
+            background-color: #333;
+            color: white;
+        }
+        .receipt {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayCartItems();
+            document.querySelector('.pay-now').addEventListener('click', payNow);
+        });
+
+        function displayCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name} - ${item.price}`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        }
+
+        function payNow() {
+            // Simulating payment callback data
+            const callbackData = {
+                transaction_id: '123456789',
+                amount: '50',
+                status: 'success'
+            };
+
+            // Process the callback data
+            const transactionId = callbackData['transaction_id'];
+            const amount = callbackData['amount'];
+            const status = callbackData['status'];
+
+            // Generate receipt
+            const receipt = `
+                <div class="receipt">
+                    <h2>Payment Receipt</h2>
+                    <p>Transaction ID: ${transactionId}</p>
+                    <p>Amount: $${amount}</p>
+                    <p>Status: ${status}</p>
+                    <p>Date: ${new Date().toLocaleString()}</p>
+                    <p>Thank you for your purchase!</p>
+                </div>
+            `;
+
+            // Display receipt
+            const cartContainer = document.querySelector('.cart');
+            cartContainer.insertAdjacentHTML('beforeend', receipt);
+
+            // Clear the cart after successful payment
+            localStorage.removeItem('cartItems');
+            displayCartItems(); // Refresh cart items
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -14,38 +119,9 @@
         <h2>Cart</h2>
         <div class="cart-items">
             <!-- Display cart items here -->
-            <?php
-            // Start the session
-            session_start();
-
-            // Function to display cart items and calculate total amount
-            function displayCartItems() {
-                if (isset($_SESSION["cartItems"])) {
-                    $cartItems = $_SESSION["cartItems"];
-                    $totalAmount = 0; // Initialize total amount
-                    foreach ($cartItems as $item) {
-                        echo "<div>" . $item["name"] . " - " . $item["price"] . "</div>";
-                        $totalAmount += $item["price"]; // Add item price to total amount
-                    }
-                    echo "<div>Total Amount: " . $totalAmount . "</div>"; // Display total amount
-                }
-            }
-
-            // Display cart items and total amount
-            displayCartItems();
-
-            ?>
-
-            <!-- Display total amount -->
         </div>
-        <form action="payment_callback.php" method="post">
-            <input type="hidden" name="totalAmount" value="<?php echo $totalAmount; ?>">
-            <input type="hidden" name="transactionId" value="12345"> <!-- Assuming a placeholder transaction ID -->
-            <button type="submit" class="pay-now">Pay Now</button>
-        </form>
+        <button class="pay-now">Pay Now</button>
     </div>
-
-    <!-- Your CSS and JavaScript code here -->
 
 </body>
 </html>
