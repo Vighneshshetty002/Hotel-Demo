@@ -62,7 +62,7 @@
 
         nav li {
             display: inline-block;
-            margin: 0 10px;
+            margin: 20px; /* Uniform spacing around buttons */
         }
 
         nav a {
@@ -93,6 +93,18 @@
             color: #666;
             padding: 10px;
             margin-bottom: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end);
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
         }
 
         /* Hero Section */
@@ -112,14 +124,16 @@
             align-items: center;
             position: relative;
             max-width: 100%;
+            height: 300px; /* Fixed height for images */
             overflow: hidden;
             border-radius: 10px;
         }
 
         .slideshow-container img {
             width: 100%;
-            height: auto;
-            opacity: 1;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
 
@@ -145,24 +159,6 @@
             text-align: center;
             padding: 20px 0;
             border-top: 1px solid #ddd; /* Add subtle border */
-        }
-
-        /* Typewriter Effect */
-        .typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 3px;
-            animation: typing 3s steps(40, end);
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
         }
 
         /* Responsive Styles */
@@ -197,11 +193,12 @@
 <body>
     <header>
         <h1>AS YOU NAME IT</h1>
-        <p>Experience the Culinary Delights</p>
+        <p>Experience the Royal Flavors of India</p>
     </header>
+
     <nav>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="menu.html">Menu</a></li>
             <li><a href="#">About</a></li>
         </ul>
@@ -213,9 +210,9 @@
 
     <div class="hero">
         <div class="slideshow-container">
-            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
-            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
-            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
+            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
+            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
+            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
         </div>
         <a href="menu.html">View Menu</a>
     </div>
@@ -231,8 +228,8 @@
         var totalImages = images.length;
 
         function showImage(index) {
-            images.forEach(image => image.style.display = 'none');
-            images[index].style.display = 'block';
+            images.forEach(image => image.style.opacity = '0');
+            images[index].style.opacity = '1';
         }
 
         function nextImage() {
