@@ -56,6 +56,11 @@
             border: 2px solid #000;
             border-radius: 10px;
         }
+        .total-amount {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
     </style>
 
     <script>
@@ -73,15 +78,25 @@
                 cartItem.textContent = `${item.name} - ${item.price}`;
                 cartItemsContainer.appendChild(cartItem);
             });
+
+            // Display total amount
+            const totalAmount = calculateTotalAmount(cartItems);
+            const totalAmountElement = document.querySelector('.total-amount');
+            totalAmountElement.textContent = `Total Amount: $${totalAmount.toFixed(2)}`;
+        }
+
+        function calculateTotalAmount(cartItems) {
+            let totalAmount = 0;
+            cartItems.forEach(item => {
+                totalAmount += parseFloat(item.price);
+            });
+            return totalAmount;
         }
 
         function payNow() {
             // Calculate total amount based on items in the cart
             const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            let totalAmount = 0;
-            cartItems.forEach(item => {
-                totalAmount += parseFloat(item.price);
-            });
+            const totalAmount = calculateTotalAmount(cartItems);
 
             // Redirect to PhonePe with dynamically calculated total amount
             const paymentLink = `upi://pay?pa=7349173681@ibl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
@@ -99,6 +114,7 @@
         <div class="cart-items">
             <!-- Display cart items here -->
         </div>
+        <div class="total-amount"></div>
         <button class="pay-now">Pay Now</button>
     </div>
 
