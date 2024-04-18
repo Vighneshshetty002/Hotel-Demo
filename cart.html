@@ -70,21 +70,20 @@
         });
 
         function displayCartItems() {
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const cartItemsContainer = document.querySelector('.cart-items');
-    cartItemsContainer.innerHTML = '';
-    cartItems.forEach(item => {
-        const cartItem = document.createElement('div');
-        cartItem.textContent = `${item.name} - ${item.price}`;
-        cartItemsContainer.appendChild(cartItem);
-    });
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.textContent = `${item.name} - ${item.price}`;
+                cartItemsContainer.appendChild(cartItem);
+            });
 
-    // Display total amount
-    const totalAmount = calculateTotalAmount(cartItems);
-    const totalAmountElement = document.querySelector('.total-amount');
-    totalAmountElement.textContent = `Total Amount: ${totalAmount.toFixed(2)}`; // Removed the dollar sign
-}
-
+            // Display total amount
+            const totalAmount = calculateTotalAmount(cartItems);
+            const totalAmountElement = document.querySelector('.total-amount');
+            totalAmountElement.textContent = `Total Amount: ${totalAmount.toFixed(2)}`; // Removed the dollar sign
+        }
 
         function calculateTotalAmount(cartItems) {
             let totalAmount = 0;
@@ -100,8 +99,7 @@
             const totalAmount = calculateTotalAmount(cartItems);
 
             // Redirect to PhonePe with dynamically calculated total amount
-            const paymentLink = `const paymentLink = `upi://pay?pa=7349173681@ybl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
-;
+            const paymentLink = `upi://pay?pa=7349173681@ybl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
             window.location.href = paymentLink;
         }
     </script>
