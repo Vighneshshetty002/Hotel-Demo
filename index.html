@@ -119,7 +119,7 @@
         .slideshow-container img {
             width: 100%;
             height: auto;
-            opacity: 1;
+            opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
 
@@ -197,12 +197,12 @@
 <body>
     <header>
         <h1>AS YOU NAME IT</h1>
-        <p class="typewriter">Experience the Royal Flavors of India</p>
+        <p>Experience the Culinary Delights</p>
     </header>
     <nav>
         <ul>
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Menu</a></li>
+            <li><a href="menu.html">Menu</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </nav>
@@ -217,35 +217,35 @@
             <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
             <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
         </div>
-        <a href="#">View Menu</a>
+        <a href="menu.html">View Menu</a>
     </div>
 
     <footer>
         <p>Powered By: VS Tech</p>
     </footer>
 
-   <script>
-    // JavaScript for image slideshow
-    var index = 0;
-    var images = document.querySelectorAll('.hero img');
-    var totalImages = images.length;
+    <script>
+        // JavaScript for image slideshow
+        var index = 0;
+        var images = document.querySelectorAll('.hero img');
+        var totalImages = images.length;
 
-    function showImage(index) {
-        images.forEach(image => image.style.display = 'none');
-        images[index].style.display = 'block';
-    }
+        function showImage(index) {
+            images.forEach(image => image.style.display = 'none');
+            images[index].style.display = 'block';
+        }
 
-    function nextImage() {
-        index = (index + 1) % totalImages;
+        function nextImage() {
+            index = (index + 1) % totalImages;
+            showImage(index);
+        }
+
+        // Show the first image initially
         showImage(index);
-    }
 
-    // Show the first image initially
-    showImage(index);
-
-    // Automatically switch images every 3 seconds
-    setInterval(nextImage, 3000);
-</script>
+        // Automatically switch images every 3 seconds
+        setInterval(nextImage, 3000);
+    </script>
 
 </body>
 </html>
