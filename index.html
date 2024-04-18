@@ -16,35 +16,38 @@
             padding: 0;
         }
 
+       
         body {
-            /* Gradient background */
-            background: linear-gradient(135deg, #f7f7f7, #e5e5e5);
-            /* Other styles */
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            margin: 0;
-        }
+    /* Gradient background */
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    /* Other styles */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
 
         /* Header Styles */
         header {
-            background-color: #fff;
-            text-align: center;
+            position: relative; /* Position header relative for z-index */
+            background-color: white; /* White background for header */
             padding: 20px;
-            border-bottom: 1px solid #ddd; /* Add subtle border */
+            text-align: center;
+            border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+            z-index: 1; /* Ensure header stays on top */
         }
 
         header h1 {
             font-size: 36px;
-            font-weight: 600;
-            color: #333;
+            font-weight: 600; /* Increased font weight for emphasis */
+            color: black; /* Black text color */
             margin-bottom: 10px;
         }
 
         header p {
             font-size: 18px;
-            color: #666;
+            color: #000; /* Black text color */
             margin-bottom: 20px;
         }
 
@@ -62,63 +65,74 @@
 
         nav li {
             display: inline-block;
-            margin: 20px; /* Uniform spacing around buttons */
+            margin: 0 10px;
         }
 
         nav a {
-            color: #333;
+            background-color: black; /* Black color for navigation links */
+            color: white;
+            padding: 10px 20px;
             text-decoration: none;
-            transition: color 0.3s; /* Smooth transition effect */
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
         }
 
         nav a:hover,
         nav a.active {
-            color: #000; /* Darker shade on hover and active state */
+            background-color: #333; /* Darker shade on hover and active state */
+            color: white;
         }
 
-        /* Introduction Section */
-        .intro {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 80%;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #fff;
-        }
-
-        .intro p {
-            font-size: 18px;
-            font-weight: 500;
-            color: #666;
-            padding: 10px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end);
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px; /* Decrease font size for smaller screens */
             }
-            to {
-                width: 100%;
+
+            header p {
+                font-size: 16px; /* Decrease font size for smaller screens */
+            }
+
+            nav {
+                margin-bottom: 20px;
+            }
+
+            nav a {
+                padding: 8px 16px; /* Decrease padding for smaller screens */
+                font-size: 14px; /* Decrease font size for smaller screens */
             }
         }
 
-        /* Hero Section */
-        .hero {
+        .intro, .hero {
             text-align: center;
             margin: 20px auto;
             max-width: 90%;
-            padding: 20px;
-            border: 1px solid #ddd;
+            overflow: hidden;
+            position: relative;
+            background-color: white; /* White background */
+            padding: 20px ;
+            border: 2px solid #000; /* Thin black border */
             border-radius: 10px;
-            background-color: #fff;
+        }
+
+        .intro p, .hero p {
+            font-size: 18px;
+            font-weight: 600;
+            color: #000; /* Black text color */
+            background-color: #fff; /* White background for the text */
+            padding: 10px; /* Padding to separate text from border */
+            margin-bottom: 20px;
+            border-radius: 5px; /* Rounded corners for the text background */
+        }
+
+        .hero {
+            position: relative;
         }
 
         .slideshow-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
             max-width: 100%;
             overflow: hidden;
@@ -133,54 +147,36 @@
         }
 
         .hero a {
-            background-color: #333;
-            color: #fff;
+            background-color: black; /* Black color for the button */
+            color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            margin-top: 20px;
-            display: inline-block;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1; /* Ensure button stays on top */
         }
 
         .hero a:hover {
-            background-color: #000;
+            background-color: #333; /* Darker shade on hover */
+            color: white;
         }
 
-        /* Footer Styles */
-        footer {
-            background-color: #333;
-            color: #fff;
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333; /* Dark background for the footer */
+            color: white;
             text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid #ddd; /* Add subtle border */
+            padding: 10px 0;
         }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px;
-            }
-
-            header p {
-                font-size: 16px;
-            }
-
-            nav {
-                margin-bottom: 20px;
-            }
-
-            nav a {
-                font-size: 16px;
-            }
-
-            .intro, .hero {
-                padding: 10px;
-            }
-
-            .hero {
-                margin-top: 20px; /* Adjust spacing between intro and hero */
-            }
+        h1{
+            background-color: white;
         }
     </style>
 
@@ -190,7 +186,6 @@
         <h1>AS YOU NAME IT</h1>
         <p>Experience the Royal Flavors of India</p>
     </header>
-
     <nav>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
@@ -201,43 +196,45 @@
 
     <div class="intro">
         <p>Welcome to AS YOU NAME IT! Explore the finest culinary delights that will tantalize your taste buds.</p>
-    </div>
+    </div><br>
 
     <div class="hero">
         <div class="slideshow-container">
-            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
-            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
-            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
+            <div class="tile">
+                <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
+                <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
+                <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
+            </div>
         </div>
-        <a href="menu.html">View Menu</a>
+        <a href="menu.html">Menu</a>
     </div>
 
-    <footer>
+    <footer class="footer">
         <p>Powered By: VS Tech</p>
     </footer>
 
-    <script>
-        // JavaScript for image slideshow
-        var index = 0;
-        var images = document.querySelectorAll('.hero img');
-        var totalImages = images.length;
+   <script>
+    // JavaScript for image slideshow
+    var index = 0;
+    var images = document.querySelectorAll('.hero img');
+    var totalImages = images.length;
 
-        function showImage(index) {
-            images.forEach(image => image.style.opacity = '0');
-            images[index].style.opacity = '1';
-        }
+    function showImage(index) {
+        images.forEach(image => image.style.display = 'none');
+        images[index].style.display = 'block';
+    }
 
-        function nextImage() {
-            index = (index + 1) % totalImages;
-            showImage(index);
-        }
-
-        // Show the first image initially
+    function nextImage() {
+        index = (index + 1) % totalImages;
         showImage(index);
+    }
 
-        // Automatically switch images every 3 seconds
-        setInterval(nextImage, 3000);
-    </script>
+    // Show the first image initially
+    showImage(index);
+
+    // Automatically switch images every 3 seconds
+    setInterval(nextImage, 3000);
+</script>
 
 </body>
 </html>
