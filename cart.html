@@ -76,6 +76,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             displayCartItems();
             document.querySelector('.pay-now').addEventListener('click', payNow);
+            // Generate QR code based on total amount after the DOM is fully loaded
+            generateQRCode();
         });
 
         function displayCartItems() {
@@ -92,9 +94,6 @@
             const totalAmount = calculateTotalAmount(cartItems);
             const totalAmountElement = document.querySelector('.total-amount');
             totalAmountElement.textContent = `Total Amount: ${totalAmount.toFixed(2)}`; // Removed the dollar sign
-
-            // Generate QR code based on total amount
-            generateQRCode(totalAmount);
         }
 
         function calculateTotalAmount(cartItems) {
@@ -105,9 +104,10 @@
             return totalAmount;
         }
 
-        function generateQRCode(amount) {
+        function generateQRCode() {
             // Generate the deep link URL based on the total amount
-            const deepLink = `upi://pay?pa=vighneshshetty002@oksbi&pn=YOUNAMEIT&am=${amount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            const totalAmount = calculateTotalAmount(JSON.parse(localStorage.getItem('cartItems')) || []);
+            const deepLink = `upi://pay?pa=vighneshshetty002@oksbi&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
 
             // Generate the QR code using qrcode.js library
             const qrCodeContainer = document.getElementById('qrcode');
