@@ -70,20 +70,21 @@
         });
 
         function displayCartItems() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const cartItemsContainer = document.querySelector('.cart-items');
-            cartItemsContainer.innerHTML = '';
-            cartItems.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name} - ${item.price}`;
-                cartItemsContainer.appendChild(cartItem);
-            });
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const cartItemsContainer = document.querySelector('.cart-items');
+    cartItemsContainer.innerHTML = '';
+    cartItems.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.textContent = `${item.name} - ${item.price}`;
+        cartItemsContainer.appendChild(cartItem);
+    });
 
-            // Display total amount
-            const totalAmount = calculateTotalAmount(cartItems);
-            const totalAmountElement = document.querySelector('.total-amount');
-            totalAmountElement.textContent = `Total Amount: $${totalAmount.toFixed(2)}`;
-        }
+    // Display total amount
+    const totalAmount = calculateTotalAmount(cartItems);
+    const totalAmountElement = document.querySelector('.total-amount');
+    totalAmountElement.textContent = `Total Amount: ${totalAmount.toFixed(2)}`; // Removed the dollar sign
+}
+
 
         function calculateTotalAmount(cartItems) {
             let totalAmount = 0;
