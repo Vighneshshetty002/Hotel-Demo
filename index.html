@@ -16,45 +16,45 @@
             padding: 0;
         }
 
-       
         body {
-    /* Gradient background */
-    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    /* Other styles */
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-}
-
+            /* Gradient background */
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            /* Other styles */
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
 
         /* Header Styles */
         header {
             position: relative; /* Position header relative for z-index */
-            background-color: white; /* White background for header */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for header */
             padding: 20px;
             text-align: center;
-            border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
+            border-radius: 10px 10px 0 0; /* Rounded corners only at the top */
             z-index: 1; /* Ensure header stays on top */
         }
 
         header h1 {
-            font-size: 36px;
-            font-weight: 600; /* Increased font weight for emphasis */
-            color: black; /* Black text color */
+            font-size: 48px;
+            font-weight: 700; /* Increased font weight for emphasis */
+            color: #333; /* Dark text color */
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for depth */
         }
 
         header p {
-            font-size: 18px;
-            color: #000; /* Black text color */
+            font-size: 20px;
+            color: #555; /* Slightly darker text color */
             margin-bottom: 20px;
         }
 
         /* Navigation Styles */
         nav {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 50px; /* Increased margin for more space below nav */
+            margin-top: 10px; /* Adjusted margin for space above nav */
         }
 
         nav ul {
@@ -65,68 +65,34 @@
 
         nav li {
             display: inline-block;
-            margin: 0 10px;
+            margin: 0 20px; /* Increased margin between nav items */
         }
 
         nav a {
-            background-color: black; /* Black color for navigation links */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black color for navigation links */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px; /* Increased padding for better clickability */
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px; /* Rounded corners for nav links */
             transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
         }
 
         nav a:hover,
         nav a.active {
             background-color: #333; /* Darker shade on hover and active state */
-            color: white;
         }
 
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px; /* Decrease font size for smaller screens */
-            }
-
-            header p {
-                font-size: 16px; /* Decrease font size for smaller screens */
-            }
-
-            nav {
-                margin-bottom: 20px;
-            }
-
-            nav a {
-                padding: 8px 16px; /* Decrease padding for smaller screens */
-                font-size: 14px; /* Decrease font size for smaller screens */
-            }
-        }
-
-        .intro, .hero {
+        /* Hero Section Styles */
+        .hero {
             text-align: center;
             margin: 20px auto;
             max-width: 90%;
             overflow: hidden;
             position: relative;
-            background-color: white; /* White background */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
             padding: 20px ;
             border: 2px solid #000; /* Thin black border */
             border-radius: 10px;
-        }
-
-        .intro p, .hero p {
-            font-size: 18px;
-            font-weight: 600;
-            color: #000; /* Black text color */
-            background-color: #fff; /* White background for the text */
-            padding: 10px; /* Padding to separate text from border */
-            margin-bottom: 20px;
-            border-radius: 5px; /* Rounded corners for the text background */
-        }
-
-        .hero {
-            position: relative;
         }
 
         .slideshow-container {
@@ -137,21 +103,23 @@
             max-width: 100%;
             overflow: hidden;
             border-radius: 10px;
+            margin-bottom: 20px; /* Increased margin below slideshow */
         }
 
         .slideshow-container img {
             width: 100%;
             height: auto;
-            opacity: 1;
+            opacity: 0;
             transition: opacity 0.5s ease-in-out;
+            border-radius: 10px; /* Rounded corners for slideshow images */
         }
 
         .hero a {
-            background-color: black; /* Black color for the button */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black color for the button */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px; /* Increased padding for better clickability */
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px; /* Rounded corners for the button */
             transition: background-color 0.3s, color 0.3s;
             position: absolute;
             bottom: 20px;
@@ -162,9 +130,9 @@
 
         .hero a:hover {
             background-color: #333; /* Darker shade on hover */
-            color: white;
         }
 
+        /* Footer Styles */
         .footer {
             position: fixed;
             bottom: 0;
@@ -174,9 +142,6 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-        }
-        h1{
-            background-color: white;
         }
     </style>
 
@@ -200,9 +165,9 @@
 
     <div class="hero">
         <div class="slideshow-container">
-            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1" width="300px">
-            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2" width="300px">
-            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3" width="300px">
+            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
+            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
+            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
         </div>
         <a href="#">Menu</a>
     </div>
@@ -211,29 +176,28 @@
         <p>Powered By: VS Tech</p>
     </footer>
 
-   <script>
-    // JavaScript for image slideshow
-    var index = 0;
-    var images = document.querySelectorAll('.hero img');
-    var totalImages = images.length;
+    <script>
+        // JavaScript for image slideshow
+        var index = 0;
+        var images = document.querySelectorAll('.hero img');
+        var totalImages = images.length;
 
-    function showImage(index) {
-        images.forEach(image => image.style.display = 'none');
-        images[index].style.display = 'block';
-    }
+        function showImage(index) {
+            images.forEach(image => image.style.opacity = 0);
+            images[index].style.opacity = 1;
+        }
 
-    function nextImage() {
-        index = (index + 1) % totalImages;
+        function nextImage() {
+            index = (index + 1) % totalImages;
+            showImage(index);
+        }
+
+        // Show the first image initially
         showImage(index);
-    }
 
-    // Show the first image initially
-    showImage(index);
-
-    // Automatically switch images every 3 seconds
-    setInterval(nextImage, 3000);
-</script>
+        // Automatically switch images every 3 seconds
+        setInterval(nextImage, 3000);
+    </script>
 
 </body>
 </html>
-
