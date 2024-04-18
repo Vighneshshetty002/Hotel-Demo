@@ -100,7 +100,8 @@
             const totalAmount = calculateTotalAmount(cartItems);
 
             // Redirect to PhonePe with dynamically calculated total amount
-            const paymentLink = `upi://pay?pa=7349173681@ybl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            const paymentLink = `const paymentLink = `upi://pay?pa=7349173681@ybl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+;
             window.location.href = paymentLink;
         }
     </script>
