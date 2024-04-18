@@ -61,7 +61,16 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
+        /* Styles for the QR code container */
+        #qrcode {
+            margin: 20px auto;
+            width: 200px; /* Adjust the size as needed */
+            height: 200px; /* Adjust the size as needed */
+        }
     </style>
+
+    <!-- Include the qrcode.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -83,6 +92,9 @@
             const totalAmount = calculateTotalAmount(cartItems);
             const totalAmountElement = document.querySelector('.total-amount');
             totalAmountElement.textContent = `Total Amount: ${totalAmount.toFixed(2)}`; // Removed the dollar sign
+
+            // Generate QR code based on total amount
+            generateQRCode(totalAmount);
         }
 
         function calculateTotalAmount(cartItems) {
@@ -93,12 +105,19 @@
             return totalAmount;
         }
 
+        function generateQRCode(amount) {
+            // Generate the deep link URL based on the total amount
+            const deepLink = `upi://pay?pa=vighneshshetty002@oksbi&pn=YOUNAMEIT&am=${amount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+
+            // Generate the QR code using qrcode.js library
+            const qrCodeContainer = document.getElementById('qrcode');
+            new QRCode(qrCodeContainer, deepLink);
+        }
+
         function payNow() {
-            // Calculate total amount based on items in the cart
+            // The payment process remains the same
             const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             const totalAmount = calculateTotalAmount(cartItems);
-
-            // Redirect to Google Pay with dynamically calculated total amount and your UPI ID
             const paymentLink = `upi://pay?pa=vighneshshetty002@oksbi&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
             window.location.href = paymentLink;
         }
@@ -115,7 +134,8 @@
             <!-- Display cart items here -->
         </div>
         <div class="total-amount"></div>
-<img src="Images/qr.jpg">     <!-- This is the qr scanner>
+        <!-- QR code container -->
+        <div id="qrcode"></div>
         <button class="pay-now">Pay Now</button>
     </div>
 
