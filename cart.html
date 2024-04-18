@@ -98,8 +98,8 @@
             const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             const totalAmount = calculateTotalAmount(cartItems);
 
-            // Redirect to PhonePe with dynamically calculated total amount
-            const paymentLink = `upi://pay?pa=9480963581@ybl&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
+            // Redirect to Google Pay with dynamically calculated total amount and your UPI ID
+            const paymentLink = `upi://pay?pa=vighneshshetty002@oksbi&pn=YOUNAMEIT&am=${totalAmount}&cu=INR&mode=02&tn=Payment%20for%20your%20Order`;
             window.location.href = paymentLink;
         }
     </script>
