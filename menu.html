@@ -115,6 +115,33 @@
             background-color: #333;
             color: white;
         }
+        .cart-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            display: none;
+        }
+        .cart-items {
+            margin-bottom: 10px;
+        }
+        .view-cart {
+            display: block;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .view-cart:hover {
+            background-color: #333;
+            color: white;
+        }
     </style>
 
 </head>
@@ -165,6 +192,11 @@
         </div>
     </div>
 
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-items"></div>
+        <a href="cart.html" class="view-cart">View Cart</a>
+    </div>
+
     <footer>
         <p>Powered By: VS Tech</p>
     </footer>
@@ -180,7 +212,12 @@
         addToCartButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const itemName = button.parentElement.querySelector('h3').textContent;
-                alert(`Added ${itemName} to cart.`);
+                const cartPopup = document.getElementById('cart-popup');
+                const cartItems = cartPopup.querySelector('.cart-items');
+                const itemAdded = document.createElement('div');
+                itemAdded.textContent = `${itemName} added to cart.`;
+                cartItems.appendChild(itemAdded);
+                cartPopup.style.display = 'block';
             });
         });
     </script>
