@@ -18,10 +18,10 @@
 
         body {
             /* Gradient background */
-            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            background: linear-gradient(135deg, #2F3BA2, #2196F3);
             /* Other styles */
             font-family: 'Poppins', sans-serif;
-            color: #333;
+            color: #fff;
             line-height: 1.6;
             padding: 20px;
         }
@@ -29,24 +29,25 @@
         /* Header Styles */
         header {
             position: relative; /* Position header relative for z-index */
-            background-color: white; /* White background for header */
+            background-color: transparent; /* Transparent background for header */
             padding: 20px;
             text-align: center;
-            border-radius: 0 0 10px 10px; /* Rounded corners only at the bottom */
             z-index: 1; /* Ensure header stays on top */
         }
 
         header h1 {
-            font-size: 36px;
-            font-weight: 600; /* Increased font weight for emphasis */
-            color: black; /* Black text color */
+            font-size: 48px;
+            font-weight: 800; /* Increased font weight for emphasis */
+            color: #fff; /* White text color */
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for emphasis */
         }
 
         header p {
-            font-size: 18px;
-            color: #000; /* Black text color */
+            font-size: 24px;
+            color: #fff; /* White text color */
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for emphasis */
         }
 
         /* Navigation Styles */
@@ -67,28 +68,29 @@
         }
 
         nav a {
-            background-color: black; /* Black color for navigation links */
-            color: white;
+            background-color: transparent; /* Transparent background for navigation links */
+            color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
+            border: 2px solid #fff; /* White border for navigation links */
             transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
         }
 
         nav a:hover,
         nav a.active {
-            background-color: #333; /* Darker shade on hover and active state */
-            color: white;
+            background-color: rgba(255, 255, 255, 0.2); /* White with opacity on hover and active state */
+            color: #fff;
         }
 
         /* Mobile Styles */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 28px; /* Decrease font size for smaller screens */
+                font-size: 36px; /* Decrease font size for smaller screens */
             }
 
             header p {
-                font-size: 16px; /* Decrease font size for smaller screens */
+                font-size: 18px; /* Decrease font size for smaller screens */
             }
 
             nav {
@@ -99,20 +101,6 @@
                 padding: 8px 16px; /* Decrease padding for smaller screens */
                 font-size: 14px; /* Decrease font size for smaller screens */
             }
-
-            .hero {
-                padding: 0;
-            }
-
-            .slideshow-container {
-                max-width: 100%;
-                overflow: hidden;
-            }
-
-            .slideshow-container img {
-                width: 100%;
-                height: auto;
-            }
         }
 
         .intro, .hero {
@@ -121,17 +109,18 @@
             max-width: 90%;
             overflow: hidden;
             position: relative;
-            background-color: white; /* White background */
+            background-color: rgba(255, 255, 255, 0.8); /* White with opacity for intro and hero */
             padding: 20px ;
-            border: 2px solid #000; /* Thin black border */
+            border: 2px solid #fff; /* White border */
             border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
         }
 
         .intro p, .hero p {
             font-size: 18px;
             font-weight: 600;
-            color: #000; /* Black text color */
-            background-color: #fff; /* White background for the text */
+            color: #333; /* Dark text color */
+            background-color: transparent; /* Transparent background for the text */
             padding: 10px; /* Padding to separate text from border */
             margin-bottom: 20px;
             border-radius: 5px; /* Rounded corners for the text background */
@@ -159,11 +148,12 @@
         }
 
         .hero a {
-            background-color: black; /* Black color for the button */
-            color: white;
+            background-color: transparent; /* Transparent background for the button */
+            color: #fff;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
+            border: 2px solid #fff; /* White border for the button */
             transition: background-color 0.3s, color 0.3s;
             position: absolute;
             bottom: 20px;
@@ -173,8 +163,8 @@
         }
 
         .hero a:hover {
-            background-color: #333; /* Darker shade on hover */
-            color: white;
+            background-color: rgba(255, 255, 255, 0.2); /* White with opacity on hover */
+            color: #fff;
         }
 
         .footer {
@@ -188,7 +178,7 @@
             padding: 10px 0;
         }
         h1{
-            background-color: white;
+            background-color: transparent; /* Transparent background for h1 */
         }
     </style>
 
@@ -196,7 +186,7 @@
 <body>
     <header>
         <h1>AS YOU NAME IT</h1>
-        <p>Experience the Royal Flavors of India</p>
+        <p>Welcome to AS YOU NAME IT! Explore the finest culinary delights that will tantalize your taste buds.</p>
     </header>
     <nav>
         <ul>
@@ -207,7 +197,7 @@
     </nav>
 
     <div class="intro">
-        <p>Welcome to AS YOU NAME IT! Explore the finest culinary delights that will tantalize your taste buds.</p>
+        <p>Experience the Wow Factor at AS YOU NAME IT! Indulge in a world of flavors that will leave you craving for more.</p>
     </div><br>
 
     <div class="hero">
