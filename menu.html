@@ -115,40 +115,6 @@
             background-color: #333;
             color: white;
         }
-
-        .cart-popup {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 20px;
-        border: 2px solid #000;
-        border-radius: 10px;
-        display: none;
-        max-width: 300px; /* Limit width to prevent overflowing */
-        z-index: 1000; /* Ensure it's above other content */
-    }
-
-    .cart-items {
-        margin-bottom: 10px;
-        font-size: 16px; /* Adjust font size */
-    }
-
-    .view-cart {
-        display: block;
-        text-align: center;
-        background-color: black;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .view-cart:hover {
-        background-color: #333;
-        color: white;
-    }
     </style>
 
 </head>
@@ -209,38 +175,14 @@
             window.location.href = paymentLink;
         }
 
-        <script>
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartPopup = document.getElementById('cart-popup');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const itemName = button.parentElement.querySelector('h3').textContent;
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            cartItems.push({ name: itemName, price: '10' }); // Replace '10' with actual price
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-            showCartPopup();
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.parentElement.querySelector('h3').textContent;
+                alert(`Added ${itemName} to cart.`);
+            });
         });
-    });
-
-    function showCartPopup() {
-        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        const cartItemsContainer = document.querySelector('.cart-items');
-        cartItemsContainer.innerHTML = '';
-        cartItems.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.textContent = `${item.name}`;
-            cartItemsContainer.appendChild(cartItem);
-        });
-        cartPopup.style.display = 'block';
-    }
-
-    function order(itemName, itemPrice) {
-        const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${itemPrice}&cu=INR&mode=02&tn=Payment%20for%20${itemName}`;
-        window.location.href = paymentLink;
-    }
-</script>
-
     </script>
 
 </body>
