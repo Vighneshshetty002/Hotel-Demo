@@ -7,52 +7,6 @@
 
     <!-- Font Import -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
-</head>
-<body>
-    <header>
-        <h1>Menu - AS YOU NAME IT</h1>
-    </header>
-
-    <div class="menu">
-        <h2>Menu</h2>
-        <div class="menu-item">
-            <h3>Dish 1</h3>
-            <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
-            <p>Description of Dish 1.</p>   <!--- Title and a short description and the price in Bold without currency symbol---->
-
-            <button class="order-button" onclick="order('Dish 1', 150)">Order</button>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <h3>Dish 2</h3>
-            <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
-            <p>Description of Dish 2.</p>    <!--- Title and a short description and the price in Bold without currency symbol---->
-
-            <button class="order-button" onclick="order('Dish 2', 150)">Order</button>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="menu-item">
-            <h3>Dish 3</h3>
-            <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
-            <p>Description of Dish 3.</p>    <!--- Title and a short description and the price in Bold without currency symbol---->
-
-            <button class="order-button" onclick="order('Dish 3', 150)">Order</button>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-
-        <div class="menu-item">
-            <h3>Dish 4</h3>
-            <p>Description of Dish 4.</p>    <!--- Title and a short description and the price in Bold without currency symbol---->
-
-            <button class="order-button" onclick="order('Dish 3', 150)">Order</button>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-    </div>
-
-    <div id="cart-popup" class="cart-popup">
-        <div class="cart-items"></div>
-        <a href="cart.html" class="view-cart">View Cart</a>
-    </div>
 
     <style>
         /* General Styles */
@@ -62,6 +16,7 @@
             color: #333;
             line-height: 1.6;
             padding: 20px;
+            margin: 0;
         }
         header {
             text-align: center;
@@ -70,25 +25,61 @@
             padding: 20px;
             border-radius: 10px;
         }
-        .menu {
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav li {
+            display: inline-block;
+            margin: 20px;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #000;
+        }
+        .intro {
             text-align: center;
             margin: 20px auto;
-            max-width: 90%;
-            overflow: hidden;
-            position: relative;
-            background-color: rgba(255, 255, 255, 0.8);
+            max-width: 80%;
             padding: 20px;
-            border: 2px solid #000;
+            border: 1px solid #ddd;
             border-radius: 10px;
+            background-color: #fff;
         }
-        .menu h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #000;
+        .intro p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #666;
+            padding: 10px;
             margin-bottom: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end);
+        }
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
         .menu-item {
-            margin-bottom: 20px;
             background-color: #fff;
             padding: 20px;
             border: 2px solid #000;
@@ -98,6 +89,12 @@
             font-size: 20px;
             font-weight: 600;
             color: #000;
+            margin-bottom: 10px;
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
             margin-bottom: 10px;
         }
         .menu-item p {
@@ -118,68 +115,66 @@
             background-color: #333;
             color: white;
         }
-        .cart-popup {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border: 2px solid #000;
-            border-radius: 10px;
-            display: none;
-        }
-        .cart-items {
-            margin-bottom: 10px;
-        }
-        .view-cart {
-            display: block;
-            text-align: center;
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .view-cart:hover {
-            background-color: #333;
-            color: white;
-        }
     </style>
 
+</head>
+<body>
+    <header>
+        <h1>Menu - AS YOU NAME IT</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="intro">
+        <p>Welcome to AS YOU NAME IT! Explore the finest culinary delights that will tantalize your taste buds.</p>
+    </div>
+
+    <div class="menu-items">
+        <div class="menu-item">
+            <h3>Dish 1</h3>
+            <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
+            <p>Description of Dish 1.</p>
+            <button class="order-button" onclick="order('Dish 1', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Dish 2</h3>
+            <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
+            <p>Description of Dish 2.</p>
+            <button class="order-button" onclick="order('Dish 2', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Dish 3</h3>
+            <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
+            <p>Description of Dish 3.</p>
+            <button class="order-button" onclick="order('Dish 3', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Dish 4</h3>
+            <p>Description of Dish 4.</p>
+            <button class="order-button" onclick="order('Dish 4', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Powered By: VS Tech</p>
+    </footer>
+
     <script>
-        // Clear cart items on page load
-        localStorage.removeItem('cartItems');
-
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        const cartPopup = document.getElementById('cart-popup');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const itemName = button.parentElement.querySelector('h3').textContent;
-                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-                cartItems.push({ name: itemName, price: '10' }); // Replace '10' with actual price
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                showCartPopup();
-            });
-        });
-
-        function showCartPopup() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-            const cartItemsContainer = document.querySelector('.cart-items');
-            cartItemsContainer.innerHTML = '';
-            cartItems.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.textContent = `${item.name}`;
-                cartItemsContainer.appendChild(cartItem);
-            });
-            cartPopup.style.display = 'block';
-        }
-
         function order(itemName, itemPrice) {
             const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${itemPrice}&cu=INR&mode=02&tn=Payment%20for%20${itemName}`;
             window.location.href = paymentLink;
         }
     </script>
+
 </body>
 </html>
