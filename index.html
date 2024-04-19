@@ -3,80 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AS YOU NAME IT</title>
+    <title>Menu - AS YOU NAME IT</title>
 
     <!-- Font Import -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
 
     <style>
         /* General Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            /* Gradient background */
-            background: linear-gradient(135deg, #f7f7f7, #e5e5e5);
-            /* Other styles */
             font-family: 'Poppins', sans-serif;
+            background-color: #fff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
             margin: 0;
         }
-
-        /* Header Styles */
         header {
-            background-color: #fff;
             text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid #ddd; /* Add subtle border */
-        }
-
-        header h1 {
-            font-size: 36px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-size: 18px;
-            color: #666;
             margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
         }
-
-        /* Navigation Styles */
         nav {
             text-align: center;
             margin-bottom: 30px;
         }
-
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
-
         nav li {
             display: inline-block;
-            margin: 20px; /* Uniform spacing around buttons */
+            margin: 20px;
         }
-
         nav a {
             color: #333;
             text-decoration: none;
-            transition: color 0.3s; /* Smooth transition effect */
+            transition: color 0.3s;
         }
-
         nav a:hover,
         nav a.active {
-            color: #000; /* Darker shade on hover and active state */
+            color: #000;
         }
-
-        /* Introduction Section */
         .intro {
             text-align: center;
             margin: 20px auto;
@@ -86,7 +56,6 @@
             border-radius: 10px;
             background-color: #fff;
         }
-
         .intro p {
             font-size: 18px;
             font-weight: 500;
@@ -97,7 +66,6 @@
             white-space: nowrap;
             animation: typing 3s steps(40, end);
         }
-
         @keyframes typing {
             from {
                 width: 0;
@@ -106,100 +74,59 @@
                 width: 100%;
             }
         }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 90%;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
             background-color: #fff;
-        }
-
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            height: 300px; /* Fixed height for images */
-            overflow: hidden;
+            padding: 20px;
+            border: 2px solid #000;
             border-radius: 10px;
         }
-
-        .slideshow-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Maintain aspect ratio and cover container */
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+        .menu-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
         }
-
-        .hero a {
-            background-color: #333;
-            color: #fff;
+        .menu-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .menu-item p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .order-button, .add-to-cart {
+            background-color: black;
+            color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            margin-top: 20px;
-            display: inline-block;
+            margin-right: 10px;
         }
-
-        .hero a:hover {
-            background-color: #000;
-        }
-
-        /* Footer Styles */
-        footer {
+        .order-button:hover, .add-to-cart:hover {
             background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid #ddd; /* Add subtle border */
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px;
-            }
-
-            header p {
-                font-size: 16px;
-            }
-
-            nav {
-                margin-bottom: 20px;
-            }
-
-            nav a {
-                font-size: 16px;
-            }
-
-            .intro, .hero {
-                padding: 10px;
-            }
-
-            .hero a {
-                padding: 8px 16px;
-            }
+            color: white;
         }
     </style>
 
 </head>
 <body>
     <header>
-        <h1>AS YOU NAME IT</h1>
-        <p>Experience the Royal Flavors of India</p>
+        <h1>Menu - AS YOU NAME IT</h1>
     </header>
 
     <nav>
         <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="menu.html">Menu</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
             <li><a href="#">About</a></li>
         </ul>
     </nav>
@@ -208,13 +135,34 @@
         <p>Welcome to AS YOU NAME IT! Explore the finest culinary delights that will tantalize your taste buds.</p>
     </div>
 
-    <div class="hero">
-        <div class="slideshow-container">
-            <img class="slide" src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
-            <img class="slide" src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
-            <img class="slide" src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
+    <div class="menu-items">
+        <div class="menu-item">
+            <h3>Dish 1</h3>
+            <img src="Images/Cheeseburger - double or single.jpeg" alt="Dish 1">
+            <p>Description of Dish 1.</p>
+            <button class="order-button" onclick="order('Dish 1', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
         </div>
-        <a href="menu.html">View Menu</a>
+        <div class="menu-item">
+            <h3>Dish 2</h3>
+            <img src="Images/Korean-Style Shrimp Burger.jpeg" alt="Dish 2">
+            <p>Description of Dish 2.</p>
+            <button class="order-button" onclick="order('Dish 2', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Dish 3</h3>
+            <img src="Images/Paneer Tikka Pizza.jpeg" alt="Dish 3">
+            <p>Description of Dish 3.</p>
+            <button class="order-button" onclick="order('Dish 3', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="menu-item">
+            <h3>Dish 4</h3>
+            <p>Description of Dish 4.</p>
+            <button class="order-button" onclick="order('Dish 4', 150)">Order</button>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
     </div>
 
     <footer>
@@ -222,26 +170,10 @@
     </footer>
 
     <script>
-        // JavaScript for image slideshow
-        var index = 0;
-        var images = document.querySelectorAll('.hero img');
-        var totalImages = images.length;
-
-        function showImage(index) {
-            images.forEach(image => image.style.opacity = '0');
-            images[index].style.opacity = '1';
+        function order(itemName, itemPrice) {
+            const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${itemPrice}&cu=INR&mode=02&tn=Payment%20for%20${itemName}`;
+            window.location.href = paymentLink;
         }
-
-        function nextImage() {
-            index = (index + 1) % totalImages;
-            showImage(index);
-        }
-
-        // Show the first image initially
-        showImage(index);
-
-        // Automatically switch images every 3 seconds
-        setInterval(nextImage, 3000);
     </script>
 
 </body>
