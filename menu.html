@@ -174,6 +174,39 @@
             const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${itemPrice}&cu=INR&mode=02&tn=Payment%20for%20${itemName}`;
             window.location.href = paymentLink;
         }
+
+        <script>
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartPopup = document.getElementById('cart-popup');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const itemName = button.parentElement.querySelector('h3').textContent;
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.push({ name: itemName, price: '10' }); // Replace '10' with actual price
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            showCartPopup();
+        });
+    });
+
+    function showCartPopup() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartItemsContainer = document.querySelector('.cart-items');
+        cartItemsContainer.innerHTML = '';
+        cartItems.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.textContent = `${item.name}`;
+            cartItemsContainer.appendChild(cartItem);
+        });
+        cartPopup.style.display = 'block';
+    }
+
+    function order(itemName, itemPrice) {
+        const paymentLink = `upi://pay?pa=7349173681@ibl&pn=AS%20YOU%20NAME%20IT&am=${itemPrice}&cu=INR&mode=02&tn=Payment%20for%20${itemName}`;
+        window.location.href = paymentLink;
+    }
+</script>
+
     </script>
 
 </body>
